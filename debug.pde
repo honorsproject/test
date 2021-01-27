@@ -7,7 +7,7 @@ public static List<Component> getAllComponents(final Container c, int depth) {
     compList.add(comp);
     for(int i = 0; i < depth; i++)
       print("  ");
-    println(comp);
+    println(comp.getClass().getCanonicalName());
     if (comp instanceof Container)
       try {
         compList.addAll(getAllComponents((Container) comp, ++depth));
