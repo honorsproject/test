@@ -1,4 +1,47 @@
-public class Gui extends JLayeredPane {
+public class Gui {
+      public processing.awt.PSurfaceAWT.SmoothCanvas canvas;
+      public Container mainPanel;
+      public JFrame frame;
+      Gui() {
+        //hook into premade frame
+        canvas = (processing.awt.PSurfaceAWT.SmoothCanvas) surface.getNative();
+        mainPanel = canvas.getParent();
+        frame = (JFrame) canvas.getFrame();
+
+        buildGui();
+
+        //finish
+        getAllComponents(frame);
+      }
+
+      void buildGui() {
+        com.formdev.flatlaf.FlatDarkLaf.install();
+
+        frame.setJMenuBar(new Menubar());
+        mainPanel.setLayout(new BorderLayout());
+
+        mainPanel.add(canvas, BorderLayout.CENTER);
+        mainPanel.add(new JButton("bruh"), BorderLayout.WEST);
+        mainPanel.add(new JButton("bruh"), BorderLayout.EAST);
+        mainPanel.add(new JButton("bruh"), BorderLayout.NORTH);
+        mainPanel.add(new JButton("bruh"), BorderLayout.SOUTH);
+      }
+
+      private class Menubar extends JMenuBar {
+        JMenu file, edit, view, layer, filter;
+        Menubar() {
+          add(file = new JMenu("File"));
+          add(edit = new JMenu("Edit"));
+          add(view = new JMenu("View"));
+          add(layer = new JMenu("Layer"));
+          add(filter = new JMenu("Filter"));
+        }
+      }
+}
+
+
+
+/*public class Gui extends JLayeredPane {
   private JFrame frame;
   Gui() {
     frame = (JFrame) ((processing.awt.PSurfaceAWT.SmoothCanvas)surface.getNative()).getFrame();
@@ -62,4 +105,4 @@ public class Gui extends JLayeredPane {
       setOpaque(false);
     }
   }
-}
+}*/
