@@ -7,6 +7,7 @@ public class Gui {
         canvas = (processing.awt.PSurfaceAWT.SmoothCanvas) surface.getNative();
         mainPanel = canvas.getParent();
         frame = (JFrame) canvas.getFrame();
+        mainPanel.remove(canvas);
 
         buildGui();
 
@@ -20,11 +21,11 @@ public class Gui {
         frame.setJMenuBar(new Menubar());
         mainPanel.setLayout(new BorderLayout());
 
-        mainPanel.add(canvas, BorderLayout.CENTER);
+        mainPanel.add(new MainView(canvas), BorderLayout.CENTER);
         mainPanel.add(new JButton("bruh"), BorderLayout.WEST);
-        mainPanel.add(new JButton("bruh"), BorderLayout.EAST);
+        //mainPanel.add(new JButton("bruh"), BorderLayout.EAST);
         mainPanel.add(new JButton("bruh"), BorderLayout.NORTH);
-        mainPanel.add(new JButton("bruh"), BorderLayout.SOUTH);
+        //mainPanel.add(new JButton("bruh"), BorderLayout.SOUTH);
       }
 
       private class Menubar extends JMenuBar {
@@ -36,6 +37,23 @@ public class Gui {
           add(layer = new JMenu("Layer"));
           add(filter = new JMenu("Filter"));
         }
+      }
+
+      private class MainView extends JSplitPane {
+        MainView(processing.awt.PSurfaceAWT.SmoothCanvas canvas) {
+          setOrientation(JSplitPane.HORIZONTAL_SPLIT);
+          setOneTouchExpandable(true);
+          setDividerLocation(0.5);
+          JButton right = new JButton("bruh");
+          setRightComponent(right);
+
+          JPanel viewport = new JPanel();
+          viewport.setLayout(new BorderLayout());
+          viewport.add(canvas, BorderLayout.CENTER);
+          viewport.add(new JButton("bruh"), BorderLayout.SOUTH);
+          setLeftComponent(viewport);
+        }
+
       }
 }
 
