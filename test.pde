@@ -9,9 +9,16 @@ void setup() {
   frameRate(1000);
 
   gui = new Gui();
+  gui.frame.createBufferStrategy(1);
+  background(255);
+  fill(0);
+  strokeWeight(10);
 }
+PVector last = new PVector(mouseX, mouseY);
 void draw() {
-  gui.frame.revalidate();
-  background(0);
-  rect(10, 10, width - 20, height - 20);
+  gui.refresh();
+  if (mousePressed) {
+    line(last.x, last.y, mouseX, mouseY);
+  }
+  last.set(mouseX, mouseY);
 }
