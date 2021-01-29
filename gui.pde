@@ -60,8 +60,16 @@ public class Gui {
       private class View extends JPanel {
         View() {
           setLayout(new BorderLayout());
-          add(canvas, BorderLayout.CENTER);
-          //add(new JButton("bruh"), BorderLayout.EAST);
+          //add(canvas, BorderLayout.CENTER);
+          JTextArea textArea = new JTextArea(20, 20);
+          Canvas canv = new Canvas();
+          canv.setPreferredSize(new Dimension(5000, 5000));
+          canv.setBackground(new Color(255, 0, 0));
+          JScrollPane scroll = new JScrollPane(canv);
+          scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+          scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+
+          add(scroll, BorderLayout.CENTER);
           add(new JButton("info"), BorderLayout.SOUTH);
         }
       }
