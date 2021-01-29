@@ -1,4 +1,4 @@
-import java.awt.event.*;
+//import java.awt.event.*;
 import java.awt.*;
 import javax.swing.*;
 
@@ -13,5 +13,5 @@ void setup() {
 void draw() {
   gui.frame.revalidate();
   background(0);
-  ellipse(mouseX, mouseY, 50, 50);
+  rect(10, 10, width - 20, height - 20);
 }
