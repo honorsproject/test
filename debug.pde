@@ -19,3 +19,7 @@ public static List<Component> getAllComponents(final Container c, int depth) {
 public static List<Component> getAllComponents(final Container c) {
   return getAllComponents(c, 0);
 }
+
+void idk() {
+  println("idk");
+}
