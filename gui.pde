@@ -62,10 +62,7 @@ public class Gui {
           setLayout(new BorderLayout());
           //add(canvas, BorderLayout.CENTER);
           JTextArea textArea = new JTextArea(20, 20);
-          Canvas canv = new Canvas();
-          canv.setPreferredSize(new Dimension(5000, 5000));
-          canv.setBackground(new Color(255, 0, 0));
-          JScrollPane scroll = new JScrollPane(canv);
+          JScrollPane scroll = new JScrollPane(canvas);
           scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
           scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 
