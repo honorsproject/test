@@ -84,14 +84,18 @@ public class Gui extends JPanel {
 
           DnDTabbedPane sub = new DnDTabbedPane();
           sub.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
-          sub.addTab("Image1", new JLabel("aaa"));
-          sub.addTab("Image2", new JScrollPane(new JTree()));
-          sub.addTab("Image3", new JScrollPane(new JTextArea("123412341234\n46746745\n245342\n")));
 
+          for(int i = 0; i<5; i++) {
+            JPanel image = new JPanel();
+            image.setBackground(Color.white);
+            image.setPreferredSize(new Dimension(1920, 1080));
+            sub.addTab("Image" + str(i), new JScrollPane(image));
+          }
           add(sub, BorderLayout.CENTER);
           add(new JButton("info"), BorderLayout.SOUTH);
         }
       }
+
       private class Main extends JSplitPane {
         Main() {
           DnDTabbedPane bro = new DnDTabbedPane();
