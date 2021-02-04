@@ -71,7 +71,7 @@ public class DnDTabbedPane extends JTabbedPane {
 
 		final DragGestureListener dgl = new DragGestureListener() {
 			public void dragGestureRecognized(DragGestureEvent e) {
-				println("dragGestureRecognized");
+				//println("dragGestureRecognized");
 
 				Point tabPt = e.getDragOrigin();
 				int dragTabIndex = indexAtLocation(tabPt.x, tabPt.y);
