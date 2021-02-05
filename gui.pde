@@ -129,11 +129,16 @@ public class ImageView extends JScrollPane {
   public void setZoom(double zoom, Point stable) {
     JViewport vp = getViewport();
     Rectangle bounds = vp.getViewRect();
+		Dimension size = vp.getSize();
     double d = zoom / canvas.zoom - 1;
     canvas.setZoom(zoom);
     vp.revalidate();
     //might introduce rounding errors but whatever
     vp.setViewPosition(new Point(bounds.x + (int)(stable.x * d), bounds.y + (int)(stable.y * d)));
+		int xborder = (int)(bounds.width);
+		int yborder = (int)(bounds.height);
+		println(bounds);
+		setViewportBorder(BorderFactory.createEmptyBorder(xborder, yborder, xborder, yborder));
   }
   public void setZoom(double zoom) {
     Rectangle bounds = getViewport().getViewRect();
@@ -144,8 +149,8 @@ public class ImageView extends JScrollPane {
     private int width, height;
     Image img; //BufferedImage later
     Canvas() {
-      img = Toolkit.getDefaultToolkit().getImage("path");
-      img = new BufferedImage(1920, 1080, BufferedImage.TYPE_INT_RGB);
+      img = Toolkit.getDefaultToolkit().getImage("C:\\Users\\dangdyl000\\Desktop\\example.jpg");
+      //img = new BufferedImage(1920, 1080, BufferedImage.TYPE_INT_RGB);
       /*try {
         img = ImageIO.read(new File("path"));
       } catch (IOException e) {}*/
